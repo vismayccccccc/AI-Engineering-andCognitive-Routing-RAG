@@ -2,20 +2,44 @@
 
 ## Overview
 
-This project implements an AI agent that generates persona-driven social media posts using large language models, LangGraph, and Retrieval-Augmented Generation (RAG). The system simulates how different personas respond to real-world events by combining reasoning, external context, and memory.
+This project builds an AI agent that generates persona-driven social media posts by combining large language models, structured workflows, and memory. The system simulates how different personas interpret and react to real-world events using contextual reasoning and past interactions.
+
+Unlike simple prompt-based systems, this agent integrates retrieval and structured execution to produce more consistent and context-aware outputs.
+
+---
+
+## Problem Statement
+
+Standard LLM outputs are often inconsistent and lack memory. This project addresses that by:
+
+* Introducing structured execution using LangGraph
+* Incorporating memory using Retrieval-Augmented Generation (RAG)
+* Generating reliable, structured JSON outputs
+
+---
 
 ## Features
 
-* Persona-based routing using embeddings (ChromaDB)
-* AI agent pipeline with LLM reasoning
-* Graph-based execution using LangGraph
-* Retrieval-Augmented Generation (RAG) with memory
-* Structured JSON output generation
-* Error handling for unreliable LLM responses
+* Persona-based routing using semantic embeddings (ChromaDB)
+* Query generation using LLM reasoning
+* Context simulation via tool-based retrieval
+* Graph-based execution pipeline using LangGraph
+* Memory integration using vector search (RAG)
+* Structured JSON output with error handling
+
+---
 
 ## Architecture
 
-Persona → Query Generation → Context Retrieval → Memory Retrieval → Post Generation → Storage
+Persona
+→ Query Generation (LLM)
+→ Context Retrieval (Tool)
+→ Memory Retrieval (Vector DB)
+→ Post Generation (LLM)
+→ Output Parsing
+→ Storage (RAG Memory)
+
+---
 
 ## Tech Stack
 
@@ -25,47 +49,80 @@ Persona → Query Generation → Context Retrieval → Memory Retrieval → Post
 * Sentence Transformers
 * Groq (LLM API)
 
+---
+
 ## Setup Instructions
 
 1. Clone the repository:
-   git clone <your-repo-link>
-   cd grid07_ai_assignment
+
+```
+git clone <your-repo-link>
+cd grid07_ai_assignment
+```
 
 2. Create environment:
-   conda create -n ai-agent python=3.10
-   conda activate ai-agent
+
+```
+conda create -n ai-agent python=3.10
+conda activate ai-agent
+```
 
 3. Install dependencies:
-   pip install -r requirements.txt
 
-4. Add .env file:
-   GROQ_API_KEY=your_api_key_here
+```
+pip install -r requirements.txt
+```
+
+4. Add `.env` file:
+
+```
+GROQ_API_KEY=your_api_key_here
+```
+
+---
 
 ## Usage
 
-Open Main.ipynb and run all cells step-by-step to execute the full pipeline.
+Run the notebook:
+
+```
+Main.ipynb
+```
+
+Execute cells step-by-step to observe the full agent pipeline.
+
+---
 
 ## Example Output
 
+```
 {
-"bot_id": "A",
-"topic": "AI Impact on Developers",
-"post_content": "OpenAI's new model is a game-changer..."
+  "bot_id": "A",
+  "topic": "AI Impact on Developers",
+  "post_content": "OpenAI's new model is a game-changer..."
 }
+```
+
+---
 
 ## Key Learnings
 
-* Building AI agents with tool usage
-* Handling inconsistent LLM outputs
-* Using vector databases for memory
-* Designing scalable pipelines with LangGraph
+* Designing AI agents with tool-based reasoning
+* Handling unreliable LLM outputs using parsing and validation
+* Implementing memory with vector databases (RAG)
+* Structuring AI workflows using LangGraph
+
+---
 
 ## Future Improvements
 
-* Real-time API integration
-* Multi-agent system
-* UI dashboard
+* Real-time data integration (news/search APIs)
+* Multi-agent interaction system
+* Thread-aware conversation memory (deep RAG)
+* Frontend interface for interaction
+
+---
 
 ## Author
 
-Your Name
+Vismay
